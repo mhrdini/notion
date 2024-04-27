@@ -9,7 +9,13 @@ const Heroes: React.FC = () => {
           <Image
             src='/documents.png'
             fill
-            className='object-contain'
+            className='object-contain block dark:hidden'
+            alt='Documents'
+          />
+          <Image
+            src='/documents-dark.png'
+            fill
+            className='object-contain hidden dark:block'
             alt='Documents'
           />
         </div>
@@ -17,7 +23,13 @@ const Heroes: React.FC = () => {
           <Image
             src='/reading.png'
             fill
-            className='object-contain'
+            className='object-contain block dark:hidden'
+            alt='Reading'
+          />
+          <Image
+            src='/reading-dark.png'
+            fill
+            className='object-contain hidden dark:block'
             alt='Reading'
           />
         </div>
