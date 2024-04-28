@@ -5,6 +5,7 @@ import { ChevronsLeft, MenuIcon } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { ElementRef, useEffect, useRef, useState } from 'react'
 import { useMediaQuery } from 'usehooks-ts'
+import UserItem from './user-item'
 
 const Navigation = () => {
   // If we are on mobile, collapse the sidebar every time we click on a different item
@@ -103,14 +104,16 @@ const Navigation = () => {
           onClick={collapse}
           role='button'
           className={cn(
-            'h-6 w-6 text-muted-foreground rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600 absolute top-3 right-2 opacity-0 group-hover/sidebar:opacity-100 transition',
+            'h-6 w-6 text-muted-foreground rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600 absolute top-2 right-2 opacity-0 group-hover/sidebar:opacity-100 transition',
             isMobile && 'opacity-100'
           )}
         >
           <ChevronsLeft className='h-6 w-6' />
         </div>
+
+        {/* Subitems */}
         <div>
-          <p>Action items</p>
+          <UserItem />
         </div>
         <div className='mt-4'>
           <p>Documents</p>
