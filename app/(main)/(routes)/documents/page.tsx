@@ -1,12 +1,13 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
-import { api } from '@/convex/_generated/api'
 import { useUser } from '@clerk/clerk-react'
 import { useMutation } from 'convex/react'
 import { PlusCircle } from 'lucide-react'
 import Image from 'next/image'
 import { toast } from 'sonner'
+
+import { Button } from '@/components/ui/button'
+import { api } from '@/convex/_generated/api'
 
 const DocumentsPage = () => {
   const { user } = useUser()

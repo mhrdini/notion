@@ -1,11 +1,12 @@
 'use client'
-import React from 'react'
-import { Button } from '@/components/ui/button'
-import { ArrowRight } from 'lucide-react'
-import { useConvexAuth } from 'convex/react'
-import Spinner from '@/components/spinner'
-import Link from 'next/link'
 import { SignInButton } from '@clerk/clerk-react'
+import { useConvexAuth } from 'convex/react'
+import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
+import React from 'react'
+
+import Spinner from '@/components/spinner'
+import { Button } from '@/components/ui/button'
 
 const Heading: React.FC = () => {
   const { isAuthenticated, isLoading } = useConvexAuth()

@@ -1,10 +1,12 @@
 'use client'
 
-import { cn } from '@/lib/utils'
 import { ChevronsLeft, MenuIcon } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { ElementRef, useEffect, useRef, useState } from 'react'
 import { useMediaQuery } from 'usehooks-ts'
+
+import { cn } from '@/lib/utils'
+
 import UserItem from './user-item'
 
 const Navigation = () => {
@@ -25,6 +27,7 @@ const Navigation = () => {
     } else {
       resetWidth()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMobile])
 
   useEffect(() => {
