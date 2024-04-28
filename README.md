@@ -2,7 +2,7 @@
 
 ## Setup
 
-### Repo
+### Repo and Prerequisites
 
 #### Creating the repo
 
@@ -53,8 +53,37 @@ jsxSingleQuote: true
 
 Or any configurations you want, honestly.
 
+#### Convex
+
+Creates the `convex` directory, in which we keep our API functions, i.e. our queries and mutations.
+
+```bash
+yarn add convex
+yarn dlx convex dev
+```
+
+#### Clerk
+
+Create an application in the [official Clerk website](https://dashboard.clerk.com), selecting GitHub
+only as a sign-up option.
+
+```bash
+yarn add @clerk/nextjs
+```
+
+Copy the Clerk API keys to the `.env.local` file.
+
+Connect Clerk to Convex by following the instructions [here](https://docs.convex.dev/auth/clerk).
+
 ## Folder Structure
 
 - Uses Route Groups, i.e. folders whose names are enclosed with parentheses, to create specific layouts for similar pages
 - Uses `_components` directory within a Route Group for group-specific components
 - Uses `components` directory in the project root directory for reusable components
+
+## Launching the Development Environment
+
+```bash
+yarn dlx convex dev # Will create .env.local
+yarn dev
+```
