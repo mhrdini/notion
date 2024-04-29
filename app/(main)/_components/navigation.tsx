@@ -4,20 +4,28 @@ import { useMutation } from 'convex/react'
 import {
   ChevronsLeft,
   MenuIcon,
+  Plus,
   PlusCircle,
   Search,
   Settings,
+  Trash,
 } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { ElementRef, useEffect, useRef, useState } from 'react'
 import { toast } from 'sonner'
 import { useMediaQuery } from 'usehooks-ts'
 
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
 import { api } from '@/convex/_generated/api'
 import { cn } from '@/lib/utils'
 
 import DocumentList from './document-list'
 import Item from './item'
+import TrashBox from './trash-box'
 import UserItem from './user-item'
 
 const Navigation = () => {
@@ -146,6 +154,18 @@ const Navigation = () => {
         </div>
         <div className='mt-4'>
           <DocumentList />
+          <Item onClick={handleCreate} icon={Plus} label='Add a page' />
+          <Popover>
+            <PopoverTrigger className='w-full mt-4'>
+              <Item label='Trash' icon={Trash} />
+            </PopoverTrigger>
+            <PopoverContent
+              className='p-0 w-72'
+              side={isMobile ? 'bottom' : 'right'}
+            >
+              <TrashBox />
+            </PopoverContent>
+          </Popover>
         </div>
         <div />
         <div
