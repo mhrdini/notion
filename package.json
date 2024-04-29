@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pre-commit": "lint-staged",
+    "postinstall": "husky install"
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.0.1",
@@ -36,8 +38,16 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-simple-import-sort": "^12.1.0",
     "eslint-plugin-unused-imports": "^3.1.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.2.2",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,jsx,tsx,css,html,astro}": [
+      "prettier --single-quote --write",
+      "eslint --fix"
+    ]
   }
 }

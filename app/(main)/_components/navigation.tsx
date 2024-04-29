@@ -1,25 +1,38 @@
 'use client'
 
-import { ChevronsLeft, MenuIcon } from 'lucide-react'
+import { useMutation } from 'convex/react'
+import {
+  ChevronsLeft,
+  MenuIcon,
+  PlusCircle,
+  Search,
+  Settings,
+} from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { ElementRef, useEffect, useRef, useState } from 'react'
+import { toast } from 'sonner'
 import { useMediaQuery } from 'usehooks-ts'
 
+import { api } from '@/convex/_generated/api'
 import { cn } from '@/lib/utils'
 
+import DocumentList from './document-list'
+import Item from './item'
 import UserItem from './user-item'
 
 const Navigation = () => {
   // If we are on mobile, collapse the sidebar every time we click on a different item
   const pathname = usePathname()
-
-  // Resizing the sidebar
   const isMobile = useMediaQuery('(max-width: 768px)')
+
   const isResizingRef = useRef(false)
   const sidebarRef = useRef<ElementRef<'aside'>>(null)
   const navbarRef = useRef<ElementRef<'div'>>(null)
   const [isResetting, setIsResetting] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(isMobile)
+
+  // Documents and its API
+  const create = useMutation(api.documents.create)
 
   useEffect(() => {
     if (isMobile) {
@@ -93,6 +106,16 @@ const Navigation = () => {
     }
   }
 
+  const handleCreate = () => {
+    const promise = create({ title: 'Untitled' })
+
+    toast.promise(promise, {
+      loading: 'Creating a new note...',
+      success: 'New note created!',
+      error: 'Failed to create a new note.',
+    })
+  }
+
   return (
     <>
       <aside
@@ -114,12 +137,15 @@ const Navigation = () => {
           <ChevronsLeft className='h-6 w-6' />
         </div>
 
-        {/* Subitems */}
+        {/* Sidebar Items */}
         <div>
           <UserItem />
+          <Item onClick={() => {}} label='Search' icon={Search} isSearch />
+          <Item onClick={() => {}} label='Settings' icon={Settings} />
+          <Item onClick={handleCreate} label='New page' icon={PlusCircle} />
         </div>
         <div className='mt-4'>
-          <p>Documents</p>
+          <DocumentList />
         </div>
         <div />
         <div

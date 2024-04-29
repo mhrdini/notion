@@ -21,6 +21,34 @@ nodeLinker: node-modules
 
 ### Packages
 
+#### Husky and lint-staged
+
+Set up pre-commit action using Husky and lint-staged by running the following commands:
+
+```bash
+yarn dlx husky-init --yarn2 && yarn
+yarn add -D lint-staged
+```
+
+```json
+// package.json
+"scripts": {
+  // ...
+  "pre-commit": "lint-staged"
+},
+"lint-staged": {
+  "**/*.{js,ts,jsx,tsx,css,html}": [
+    "prettier --single-quote --write",
+    "eslint --fix"
+  ]
+}
+```
+
+```bash
+# .husky/pre-commit
+yarn run pre-commit
+```
+
 #### shadcn/ui
 
 ```bash
@@ -86,4 +114,48 @@ Connect Clerk to Convex by following the instructions [here](https://docs.convex
 ```bash
 yarn dlx convex dev # Will create .env.local
 yarn dev
+```
+
+## API
+
+Using Convex you can create the schema, as well as use `mutation` and `query` to create the API.
+
+```typescript
+// convex/schema.ts
+import { defineSchema, defineTable } from 'convex/server'
+import { v } from 'convex/values'
+
+export default defineSchema({
+  documents: defineTable({
+    // add the fields using v to type them and make them optional
+  })
+    .index('by_user', [...])
+})
+```
+
+```typescript
+// convex/documents.ts
+import { v } from 'convex/values'
+
+import { mutation, query } from './_generated/server'
+
+export const create = mutation({
+  args: {
+    // the arguments needed to create the object
+  },
+  handler: async (ctx, args) => {
+
+    // for auth check
+    const identity = await ctx.auth.getUserIdentity()
+    if (!identity) {
+      throw new Error('Not authenticated')
+    }
+
+    // to interact with the connected DB
+    const document = await ctx.db.insert('documents', {
+      // enter the fields here
+    })
+
+    return document
+  },
 ```
