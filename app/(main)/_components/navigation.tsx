@@ -21,6 +21,7 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 import { api } from '@/convex/_generated/api'
+import { useSearch } from '@/hooks/use-search'
 import { cn } from '@/lib/utils'
 
 import DocumentList from './document-list'
@@ -29,6 +30,8 @@ import TrashBox from './trash-box'
 import UserItem from './user-item'
 
 const Navigation = () => {
+  const search = useSearch()
+
   // If we are on mobile, collapse the sidebar every time we click on a different item
   const pathname = usePathname()
   const isMobile = useMediaQuery('(max-width: 768px)')
@@ -148,7 +151,7 @@ const Navigation = () => {
         {/* Sidebar Items */}
         <div>
           <UserItem />
-          <Item onClick={() => {}} label='Search' icon={Search} isSearch />
+          <Item onClick={search.onOpen} label='Search' icon={Search} isSearch />
           <Item onClick={() => {}} label='Settings' icon={Settings} />
           <Item onClick={handleCreate} label='New page' icon={PlusCircle} />
         </div>
