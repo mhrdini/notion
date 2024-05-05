@@ -4,12 +4,11 @@ import { useQuery } from 'convex/react'
 import { MenuIcon } from 'lucide-react'
 import { useParams } from 'next/navigation'
 
+import Banner from '@/app/(main)/_components/banner'
+import Menu from '@/app/(main)/_components/menu'
+import Title from '@/app/(main)/_components/title'
 import { api } from '@/convex/_generated/api'
 import { Id } from '@/convex/_generated/dataModel'
-
-import Banner from './banner'
-import Menu from './menu'
-import Title from './title'
 
 interface NavbarProps {
   isCollapsed: boolean

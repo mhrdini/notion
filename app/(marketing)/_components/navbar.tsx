@@ -4,13 +4,12 @@ import { useConvexAuth } from 'convex/react'
 import Link from 'next/link'
 import React from 'react'
 
+import Logo from '@/app/(marketing)/_components/logo'
 import { ModeToggle } from '@/components/mode-toggle'
 import Spinner from '@/components/spinner'
 import { Button } from '@/components/ui/button'
 import useScrollTop from '@/hooks/use-scroll-top'
 import { cn } from '@/lib/utils'
-
-import Logo from './logo'
 
 const Navbar: React.FC = () => {
   const { isAuthenticated, isLoading } = useConvexAuth()

@@ -6,9 +6,6 @@ import { File } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-import { api } from '@/convex/_generated/api'
-import { useSearch } from '@/hooks/use-search'
-
 import {
   CommandDialog,
   CommandEmpty,
@@ -16,7 +13,9 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from './ui/command'
+} from '@/components/ui/command'
+import { api } from '@/convex/_generated/api'
+import { useSearch } from '@/hooks/use-search'
 
 const SearchCommand = () => {
   const { user } = useUser()

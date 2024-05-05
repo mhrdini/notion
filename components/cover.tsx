@@ -5,13 +5,13 @@ import { ImageIcon, X } from 'lucide-react'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
 
+import { Button } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
 import { api } from '@/convex/_generated/api'
 import { Id } from '@/convex/_generated/dataModel'
 import { useCoverImage } from '@/hooks/use-cover-image'
 import { useEdgeStore } from '@/lib/edgestore'
 import { cn } from '@/lib/utils'
-
-import { Button } from './ui/button'
 
 interface CoverProps {
   url?: string
@@ -74,6 +74,10 @@ const Cover = ({ url, preview }: CoverProps) => {
       )}
     </div>
   )
+}
+
+Cover.Skeleton = function CoverSkeleton() {
+  return <Skeleton className='h-[12vh] w-full' />
 }
 
 export default Cover

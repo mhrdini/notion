@@ -5,11 +5,10 @@ import { FileIcon } from 'lucide-react'
 import { useParams, useRouter } from 'next/navigation'
 import { useState } from 'react'
 
+import Item from '@/app/(main)/_components/item'
 import { api } from '@/convex/_generated/api'
 import { Doc, Id } from '@/convex/_generated/dataModel'
 import { cn } from '@/lib/utils'
-
-import Item from './item'
 
 interface DocumentListProps {
   parentDocumentId?: Id<'documents'>

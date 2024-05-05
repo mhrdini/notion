@@ -4,7 +4,11 @@ import EmojiPicker, { Theme } from 'emoji-picker-react'
 import { useTheme } from 'next-themes'
 import React from 'react'
 
-import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
 
 interface IconPickerProps {
   // eslint-disable-next-line unused-imports/no-unused-vars

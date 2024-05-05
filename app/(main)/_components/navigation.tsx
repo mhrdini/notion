@@ -15,6 +15,11 @@ import { ElementRef, useEffect, useRef, useState } from 'react'
 import { toast } from 'sonner'
 import { useMediaQuery } from 'usehooks-ts'
 
+import DocumentList from '@/app/(main)/_components/document-list'
+import Item from '@/app/(main)/_components/item'
+import Navbar from '@/app/(main)/_components/navbar'
+import TrashBox from '@/app/(main)/_components/trash-box'
+import UserItem from '@/app/(main)/_components/user-item'
 import {
   Popover,
   PopoverContent,
@@ -24,12 +29,6 @@ import { api } from '@/convex/_generated/api'
 import { useSearch } from '@/hooks/use-search'
 import { useSettings } from '@/hooks/use-settings'
 import { cn } from '@/lib/utils'
-
-import DocumentList from './document-list'
-import Item from './item'
-import Navbar from './navbar'
-import TrashBox from './trash-box'
-import UserItem from './user-item'
 
 const Navigation = () => {
   const params = useParams()

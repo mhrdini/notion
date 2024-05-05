@@ -1,8 +1,7 @@
 import React from 'react'
 
+import Logo from '@/app/(marketing)/_components/logo'
 import { Button } from '@/components/ui/button'
-
-import Logo from './logo'
 
 const Footer: React.FC = () => {
   return (
